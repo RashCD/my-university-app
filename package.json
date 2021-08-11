@@ -2,7 +2,7 @@
   "name": "my-university-app",
   "version": "1.0.0",
   "description": "nodejs setup with express & create-react-app typescript project",
-  "main": "index.js",
+  "main": "./server/index.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RashCD/my-university-app.git"
@@ -15,10 +15,10 @@
   "homepage": "https://github.com/RashCD/my-university-app#readme",
   "scripts": {
     "build": "rimraf dist && tsc",
-    "preserve": "npm run build",
-    "serve": "cross-env NODE_ENV=development concurrently \"tsc --watch\" \"nodemon -q dist/index.js\"",
-    "prestart": "npm run build",
-    "start": "cross-env NODE_ENV=production node dist/index.js",
+    "preserver": "npm run build",
+    "server": "cross-env NODE_ENV=development concurrently \"tsc --watch\" \"nodemon -q dist/server/index.js\"",
+    "preproduction": "npm run build",
+    "production": "cross-env NODE_ENV=production node dist/server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
