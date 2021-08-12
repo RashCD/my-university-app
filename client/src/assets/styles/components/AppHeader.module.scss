@@ -1,0 +1,39 @@
+.appHeader {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  background-color: var(--brand-color);
+  z-index: 1;
+  box-shadow: 0px 2px 7px 0px var(--gray);
+  padding: 0 10px;
+  color: var(--white);
+  position: relative;
+}
+
+.title {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  font-size: 32px;
+
+  @media (max-width: 500px) {
+    font-size: 22px;
+  }
+}
+
+.empty {
+  width: 20px;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  color: var(--white);
+  font-weight: bold;
+  position: absolute;
+
+  @media (max-width: 500px) {
+    font-size: 15px;
+  }
+}

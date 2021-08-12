@@ -1,0 +1,9 @@
+.iconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(var(--icon-size) + 5px);
+  height: calc(var(--icon-size) + 5px);
+  background-color: var(--icon-color);
+  mask: var(--icon-src) no-repeat center center/contain;
+}

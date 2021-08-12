@@ -1,0 +1,17 @@
+.button {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  background-color: transparent;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  width: auto;
+  height: auto;
+  cursor: pointer;
+  font-weight: bold;
+
+  &:focus {
+    outline: solid transparent;
+    box-shadow: 0 0 0 3px var(--focus-color);
+  }
+}

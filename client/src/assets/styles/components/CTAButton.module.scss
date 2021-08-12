@@ -1,0 +1,21 @@
+.cta {
+  background-color: var(--secondary-brand-color);
+  width: 90px;
+  height: 30px;
+
+  &:active {
+    transform: translateY(1px);
+    filter: saturate(150%);
+  }
+
+  &:hover {
+    color: var(--secondary-brand-color);
+    border-color: currentColor;
+    background-color: var(--white);
+  }
+
+  &:focus {
+    outline: solid transparent;
+    box-shadow: 0 0 0 1px var(--white), 0 0 0 3px var(--focus-color);
+  }
+}
