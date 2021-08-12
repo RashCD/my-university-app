@@ -16,9 +16,9 @@
   "scripts": {
     "build": "rimraf dist && tsc",
     "preserver": "npm run build",
-    "server": "cross-env NODE_ENV=development concurrently \"tsc --watch\" \"nodemon -q dist/server/index.js\"",
+    "server": "cross-env NODE_ENV=development concurrently \"tsc --watch\" \"nodemon -q dist/index.js\"",
     "preproduction": "npm run build",
-    "production": "cross-env NODE_ENV=production node dist/server/index.js",
+    "production": "cross-env NODE_ENV=production node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
