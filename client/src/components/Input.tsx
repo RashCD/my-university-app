@@ -1,4 +1,5 @@
 import React from 'react';
+import Styles from '../assets/styles/components/Input.module.scss';
 
 type InputPropTypes = {
   id: string;
@@ -23,11 +24,19 @@ const Input = (props: InputPropTypes) => {
     errors = {},
   } = props;
   return (
-    <>
-      <label htmlFor={id}>{label}</label>
-      <input type={type} id={id} {...register} placeholder={placeholder} />
+    <div className={Styles.inputContainer}>
+      <label className={Styles.label} htmlFor={id}>
+        {label}
+      </label>
+      <input
+        className={Styles.input}
+        type={type}
+        id={id}
+        {...register}
+        placeholder={placeholder}
+      />
       {errors[id] && <p>{errors[id].message}</p>}
-    </>
+    </div>
   );
 };
 

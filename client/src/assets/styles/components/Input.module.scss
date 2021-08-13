@@ -1,0 +1,26 @@
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  width: 100%;
+  padding: 0 10px;
+
+  > * {
+    margin-bottom: 10px;
+  }
+}
+
+.label {
+  font-size: 16px;
+}
+
+.input {
+  height: 30px;
+  width: 100%;
+
+  ::placeholder {
+    font: 14px;
+    font-size: 400;
+    color: var(--gray);
+  }
+}
