@@ -1,0 +1,35 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table {
+  td,
+  th {
+    border: 1px solid var(--light-gray);
+    display: inline-flex;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+
+  tr {
+    display: flex;
+
+    &:nth-child(even) {
+      background-color: var(--white);
+    }
+
+    &:hover {
+      background-color: var(--light-gray);
+    }
+  }
+
+  th {
+    height: 50px;
+    text-align: left;
+    background-color: var(--secondary-brand-color);
+    color: var(--white);
+  }
+}
