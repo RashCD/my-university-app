@@ -5,22 +5,37 @@
   width: 100%;
   padding: 0 10px;
 
-  > * {
+  > :last-child {
     margin-bottom: 10px;
   }
 }
 
 .label {
   font-size: 16px;
+  margin-bottom: 5px;
 }
 
 .input {
   height: 30px;
   width: 100%;
+  border: 1px solid var(--black);
+  border-radius: 5px;
 
   ::placeholder {
     font: 14px;
     font-size: 400;
     color: var(--gray);
   }
+}
+
+.inputError {
+  border: 1px solid var(--warning);
+  border-radius: 5px;
+}
+
+.errorText {
+  font-size: 12px;
+  font-weight: 400;
+  text-align: end;
+  color: var(--warning);
 }

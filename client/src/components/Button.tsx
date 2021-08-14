@@ -10,12 +10,18 @@ export type buttonTypes = {
 };
 
 const Button = (props: buttonTypes) => {
-  const { onButtonClick = () => {}, type = 'button' } = props;
+  const {
+    onButtonClick = () => {},
+    type = 'button',
+    className,
+    ...rest
+  } = props;
   return (
     <button
       type={type}
-      className={mergeClass(Styles.button, props.className)}
+      className={mergeClass(Styles.button, className)}
       onClick={onButtonClick}
+      {...rest}
     >
       {props.children}
     </button>

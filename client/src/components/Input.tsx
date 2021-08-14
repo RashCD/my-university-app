@@ -1,5 +1,6 @@
 import React from 'react';
 import Styles from '../assets/styles/components/Input.module.scss';
+import mergeClass from 'clsx';
 
 type InputPropTypes = {
   id: string;
@@ -23,19 +24,21 @@ const Input = (props: InputPropTypes) => {
     register,
     errors = {},
   } = props;
+  const isError = Boolean(errors[id] && errors[id].message);
+
   return (
     <div className={Styles.inputContainer}>
       <label className={Styles.label} htmlFor={id}>
         {label}
       </label>
       <input
-        className={Styles.input}
+        className={mergeClass(Styles.input, isError && Styles.inputError)}
         type={type}
         id={id}
         {...register}
         placeholder={placeholder}
       />
-      {errors[id] && <p>{errors[id].message}</p>}
+      {errors[id] && <p className={Styles.errorText}>*{errors[id].message}</p>}
     </div>
   );
 };
