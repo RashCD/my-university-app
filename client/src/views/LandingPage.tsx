@@ -1,27 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { RouteComponentProps } from '@reach/router';
-import AppHeader from '../components/AppHeader';
-import Input from '../components/Input';
 import { useForm } from 'react-hook-form';
-
-import Styles from '../assets/styles/views/LandingPage.module.scss';
-import CTAButton from '../components/CTAButton';
-import Table from '../components/Table';
 import { Column } from 'react-table';
 
+import AppHeader from '../components/AppHeader';
+import CTAButton from '../components/CTAButton';
+import Input from '../components/Input';
+import Table from '../components/Table';
+import Styles from '../assets/styles/views/LandingPage.module.scss';
+import getUniversity from '../queries/getUniversity';
+import { useQuery } from 'react-query';
+
 type FormValues = {
-  search: string;
+  name: string;
+  country: string;
 };
 
 export type Data = {
   name: string;
   country: string;
-  country_code: string;
-  web_pages: string;
+  alpha_two_code: string;
+  web_pages: string[];
 };
 
 const LandingPage = (props: RouteComponentProps) => {
   const { register, handleSubmit } = useForm<FormValues>();
+  const [formValue, setFormValue] = useState({});
+
+  const { data, isLoading, isSuccess } = useQuery(
+    ['keys', formValue],
+    () => getUniversity(formValue),
+    {
+      enabled: Object.keys(formValue).length > 0,
+    }
+  );
 
   const columns: Column<Data>[] = React.useMemo(
     () => [
@@ -34,31 +46,24 @@ const LandingPage = (props: RouteComponentProps) => {
         accessor: 'country',
       },
       {
-        Header: 'CountryCode',
-        accessor: 'country_code',
+        Header: 'Country Code',
+        accessor: 'alpha_two_code',
       },
       {
-        Header: 'WebPages',
+        Header: 'Web Pages',
         accessor: 'web_pages',
       },
     ],
     []
   );
 
-  const data: Data[] = React.useMemo(
-    () => [
-      {
-        name: 'Hello',
-        country: 'World',
-        country_code: 'MY',
-        web_pages: 'https://',
-      },
-    ],
-    []
-  );
+  const result: Data[] | undefined = React.useMemo(() => data, [data]);
 
-  const onFormSubmit = (data: FormValues) => {
-    console.log(data);
+  const onFormSubmit = (form: FormValues) => {
+    setFormValue({
+      ...(form.name && { name: form.name }),
+      ...(form.country && { country: form.country }),
+    });
   };
 
   return (
@@ -71,17 +76,18 @@ const LandingPage = (props: RouteComponentProps) => {
               id="uni-name"
               label="Name"
               placeholder="Search by University Name"
-              register={register('search')}
+              register={register('name')}
             />
             <Input
               id="uni-country"
               label="Country"
               placeholder="Search by University Country"
-              register={register('search')}
+              register={register('country')}
             />
             <CTAButton type="submit">Search</CTAButton>
           </form>
-          <Table columns={columns} data={data} />
+          {isLoading && '...Loading'}
+          {isSuccess && <Table columns={columns} data={result!} />}
         </div>
       </main>
     </div>

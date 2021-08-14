@@ -18,11 +18,16 @@ table {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    min-width: 100px;
+    min-width: 150px;
   }
 
   tr {
     display: flex;
+    font-size: 12px;
+    font-weight: 400;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: break-word;
 
     &:nth-child(even) {
       background-color: var(--white);

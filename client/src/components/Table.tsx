@@ -41,8 +41,19 @@ const Table = (props: TablePropTypes) => {
           prepareRow(row);
           return (
             <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => {
-                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
+              {row.cells.map((cell, index, { length }) => {
+                if (length === index + 1)
+                  return (
+                    <td {...cell.getCellProps()}>
+                      <a href={cell.value} target="_blank" rel="noreferrer">
+                        {cell.value}
+                      </a>
+                    </td>
+                  );
+                else
+                  return (
+                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                  );
               })}
             </tr>
           );
