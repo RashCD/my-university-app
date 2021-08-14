@@ -69,7 +69,7 @@ const LandingPage = (props: RouteComponentProps) => {
   return (
     <div className="app">
       <AppHeader title="University List App" />
-      <main className={Styles.appMain}>
+      <main className="app-main">
         <div className={Styles.container}>
           <form className={Styles.form} onSubmit={handleSubmit(onFormSubmit)}>
             <Input

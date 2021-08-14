@@ -18,6 +18,7 @@
   font-size: 32px;
 
   @media (max-width: 500px) {
+    justify-content: flex-start;
     font-size: 22px;
   }
 }
@@ -33,6 +34,21 @@
   color: var(--white);
   font-weight: bold;
   position: absolute;
+
+  @media (max-width: 500px) {
+    font-size: 15px;
+  }
+}
+
+Button.loginButton {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size: 20px;
+  color: var(--white);
+  font-weight: bold;
+  position: absolute;
+  right: 10px;
 
   @media (max-width: 500px) {
     font-size: 15px;

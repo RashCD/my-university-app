@@ -4,6 +4,7 @@ import Styles from '../assets/styles/components/AppHeader.module.scss';
 import Button from './Button';
 import Icon from './Icon';
 import BackIcon from '../assets/icons/back.svg';
+import UserIcon from '../assets/icons/user.svg';
 
 const MOBILE_SIZE = 500;
 
@@ -47,6 +48,22 @@ const AppHeader = (props: { title?: string }) => {
         </Button>
       )}
       <h1 className={Styles.title}>{props.title || ''}</h1>
+      {isLanding && (
+        <Button
+          className={Styles.loginButton}
+          onButtonClick={() => navigate('/login')}
+        >
+          <>
+            <Icon
+              src={UserIcon}
+              size={iconSize}
+              color="white"
+              alt="login icon"
+            />
+            Login
+          </>
+        </Button>
+      )}
     </header>
   );
 };

@@ -43,3 +43,11 @@ p {
   min-height: 100%;
   background-color: var(--background-color);
 }
+
+.app-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  padding-top: 20px;
+}
