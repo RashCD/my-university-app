@@ -8,7 +8,7 @@ const requestSignup = (params: SignupFormValues) => {
     formData.append(key, params[key as keyof SignupFormValues]);
   }
 
-  axios.post('/api/signup', params);
+  return axios.post('/api/signup', params);
 };
 
 export default requestSignup;

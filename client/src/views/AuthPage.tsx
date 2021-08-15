@@ -1,5 +1,5 @@
-import { RouteComponentProps } from '@reach/router';
-import React, { useState } from 'react';
+import { navigate, RouteComponentProps } from '@reach/router';
+import React, { useContext, useState } from 'react';
 import AppHeader from '../components/AppHeader';
 import Button from '../components/Button';
 import Styles from '../assets/styles/views/AuthPage.module.scss';
@@ -7,6 +7,7 @@ import LoginForm from '../components/LoginForm';
 import SignupForm from '../components/SignupForm';
 import requestLogin from '../queries/requestLogin';
 import requestSignup from '../queries/requestSignup';
+import { UserContext } from '../context/UserContext';
 
 enum AuthType {
   LOGIN = 'login',
@@ -14,7 +15,13 @@ enum AuthType {
 }
 
 const AuthPage = (props: RouteComponentProps) => {
+  const { setLoggedIn } = useContext(UserContext);
   const [buttonSelected, setButtonSelected] = useState(AuthType.LOGIN);
+
+  const loggedInCallback = () => {
+    setLoggedIn(true);
+    navigate('/profile');
+  };
 
   return (
     <div className="app">
@@ -39,9 +46,21 @@ const AuthPage = (props: RouteComponentProps) => {
           </Button>
           <div className={Styles.formContainer}>
             {buttonSelected === AuthType.LOGIN ? (
-              <LoginForm onFormSubmit={requestLogin} />
+              <LoginForm
+                onFormSubmit={(event) =>
+                  requestLogin(event)
+                    .then((res) => res.status === 200)
+                    .then(loggedInCallback)
+                }
+              />
             ) : (
-              <SignupForm onFormSubmit={requestSignup} />
+              <SignupForm
+                onFormSubmit={(event) =>
+                  requestSignup(event)
+                    .then((res) => res.status === 200)
+                    .then(loggedInCallback)
+                }
+              />
             )}
           </div>
         </div>

@@ -7,7 +7,8 @@ const requestLogin = (params: LoginFormValues) => {
   for (const key in params) {
     formData.append(key, params[key as keyof LoginFormValues]);
   }
-  axios.post('/api/login', params);
+
+  return axios.post('/api/login', params);
 };
 
 export default requestLogin;
