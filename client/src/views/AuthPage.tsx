@@ -20,7 +20,7 @@ const AuthPage = (props: RouteComponentProps) => {
 
   const loggedInCallback = () => {
     setLoggedIn(true);
-    navigate('/profile');
+    navigate('/profile', { replace: true });
   };
 
   return (
@@ -51,6 +51,7 @@ const AuthPage = (props: RouteComponentProps) => {
                   requestLogin(event)
                     .then((res) => res.status === 200)
                     .then(loggedInCallback)
+                    .catch((err) => alert(err.response.data.message))
                 }
               />
             ) : (
@@ -59,6 +60,7 @@ const AuthPage = (props: RouteComponentProps) => {
                   requestSignup(event)
                     .then((res) => res.status === 200)
                     .then(loggedInCallback)
+                    .catch((err) => alert(err.response.data.message))
                 }
               />
             )}

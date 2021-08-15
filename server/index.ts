@@ -56,7 +56,7 @@ app.post(
 
         response.json({ message: 'user found' });
       } else {
-        response.json({ message: 'User not found. Try again' });
+        response.status(400).json({ message: 'User not found. Try again' });
       }
     });
   }
@@ -87,7 +87,7 @@ app.post(
 
       if (isDuplicate) {
         return response
-          .status(404)
+          .status(400)
           .json({ message: 'User already registered' });
       }
 
