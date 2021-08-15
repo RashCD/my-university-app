@@ -5,6 +5,8 @@ import Button from '../components/Button';
 import Styles from '../assets/styles/views/AuthPage.module.scss';
 import LoginForm from '../components/LoginForm';
 import SignupForm from '../components/SignupForm';
+import requestLogin from '../queries/requestLogin';
+import requestSignup from '../queries/requestSignup';
 
 enum AuthType {
   LOGIN = 'login',
@@ -37,9 +39,9 @@ const AuthPage = (props: RouteComponentProps) => {
           </Button>
           <div className={Styles.formContainer}>
             {buttonSelected === AuthType.LOGIN ? (
-              <LoginForm onFormSubmit={() => {}} />
+              <LoginForm onFormSubmit={requestLogin} />
             ) : (
-              <SignupForm onFormSubmit={() => {}} />
+              <SignupForm onFormSubmit={requestSignup} />
             )}
           </div>
         </div>

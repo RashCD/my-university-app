@@ -1,4 +1,3 @@
-import React, { FormEvent } from 'react';
 import CTAButton from './CTAButton';
 import Input from './Input';
 import Styles from '../assets/styles/components/Form.module.scss';
@@ -6,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-type SignupFormValues = {
+export type SignupFormValues = {
   username: string;
   password: string;
   confirm_password: string;
@@ -24,7 +23,7 @@ const schema = yup.object().shape({
 });
 
 type SignupFormTypes = {
-  onFormSubmit: (event: FormEvent) => void;
+  onFormSubmit: (event: SignupFormValues) => void;
 };
 
 const SignupForm = (props: SignupFormTypes) => {

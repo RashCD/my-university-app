@@ -1,4 +1,3 @@
-import React, { FormEvent } from 'react';
 import CTAButton from './CTAButton';
 import Input from './Input';
 import Styles from '../assets/styles/components/Form.module.scss';
@@ -6,13 +5,13 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-type LoginFormValues = {
+export type LoginFormValues = {
   username: string;
   password: string;
 };
 
 type LoginFormTypes = {
-  onFormSubmit: (event: FormEvent) => void;
+  onFormSubmit: (event: LoginFormValues) => void;
 };
 
 const schema = yup.object().shape({
