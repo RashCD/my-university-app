@@ -15,7 +15,7 @@ export const setCookie = ({
   const randomString = random(10);
 
   return response.cookie(name, content || randomString, {
+    path: '/',
     maxAge: maxAgeDay * 24 * 60 * 60 * 1000, // 2 days (default)
-    httpOnly: true,
   });
 };
