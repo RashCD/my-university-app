@@ -48,6 +48,11 @@ app.post(
 
       if (user) {
         setCookie({ response });
+        setCookie({
+          name: 'user',
+          content: { username: user.username, country: user.country },
+          response,
+        });
 
         response.json({ message: 'user found' });
       } else {
@@ -66,7 +71,7 @@ app.post(
         throw error;
       }
 
-      const oldContent = data && JSON.parse(data);
+      const oldContent: User[] = data && JSON.parse(data);
 
       const newContent = {
         username: request.body.username,
@@ -74,21 +79,38 @@ app.post(
         country: request.body.country || '',
       };
 
+      const isDuplicate = oldContent.some(
+        (user) =>
+          user.username === newContent.username &&
+          user.password === newContent.password
+      );
+
+      if (isDuplicate) {
+        return response
+          .status(404)
+          .json({ message: 'User already registered' });
+      }
+
       const mergeContent = data
         ? JSON.stringify([...oldContent, newContent], null, 4)
         : JSON.stringify([newContent], null, 4);
 
-      return fs.writeFile(filePath, mergeContent, (err) => {
+      fs.writeFile(filePath, mergeContent, (err) => {
         if (err) {
           throw err;
         }
+
+        setCookie({ response });
+        setCookie({
+          name: 'user',
+          content: newContent,
+          response,
+        });
+        response.json({ message: 'User registered' });
+
         console.log('The file was saved!');
       });
     });
-
-    setCookie({ response });
-
-    response.json({ message: 'User registered' });
   }
 );
 

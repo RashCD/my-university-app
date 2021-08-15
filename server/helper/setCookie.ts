@@ -3,18 +3,18 @@ import { random } from './random';
 
 export const setCookie = ({
   name = 'cookieName',
-  randomLength = 10,
+  content,
   maxAgeDay = 2,
   response,
 }: {
   name?: string;
-  randomLength?: number;
   maxAgeDay?: number;
+  content?: string | object;
   response: Response;
 }) => {
-  const randomString = random(randomLength);
+  const randomString = random(10);
 
-  return response.cookie(name, randomString, {
+  return response.cookie(name, content || randomString, {
     maxAge: maxAgeDay * 24 * 60 * 60 * 1000, // 2 days (default)
     httpOnly: true,
   });
