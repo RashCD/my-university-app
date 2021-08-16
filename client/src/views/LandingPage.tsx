@@ -28,7 +28,7 @@ const LandingPage = (props: RouteComponentProps) => {
   const [formValue, setFormValue] = useState({});
 
   const { data, isLoading, isSuccess } = useQuery(
-    ['keys', formValue],
+    [formValue],
     () => getUniversity(formValue),
     {
       enabled: Object.keys(formValue).length > 0,

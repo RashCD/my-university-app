@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import './assets/styles/global.scss';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import Routes from './Routes';
 import { UserProvider } from './context/UserContext';
 
@@ -13,6 +14,7 @@ function App() {
         <UserProvider>
           <Routes />
         </UserProvider>
+        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </Suspense>
   );
