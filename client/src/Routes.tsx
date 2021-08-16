@@ -3,7 +3,7 @@ import { Router, Redirect } from '@reach/router';
 import LandingPage from './views/LandingPage';
 import NotFoundPage from './views/NotFoundPage';
 import AuthPage from './views/AuthPage';
-import ProfilePage from './views/Profile';
+import ProfilePage from './views/ProfilePage';
 import { UserContext } from './context/UserContext';
 
 const Routes = () => {

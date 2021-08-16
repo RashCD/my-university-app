@@ -1,14 +1,16 @@
 import { navigate } from '@reach/router';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Styles from '../assets/styles/components/AppHeader.module.scss';
 import Button from './Button';
 import Icon from './Icon';
 import BackIcon from '../assets/icons/back.svg';
 import UserIcon from '../assets/icons/user.svg';
+import { UserContext } from '../context/UserContext';
 
 const MOBILE_SIZE = 500;
 
 const AppHeader = (props: { title?: string }) => {
+  const { loggedIn } = useContext(UserContext);
   const isLanding = window.location.pathname === '/';
 
   const [isMobileSize, setIsMobileSize] = useState(
@@ -48,7 +50,7 @@ const AppHeader = (props: { title?: string }) => {
         </Button>
       )}
       <h1 className={Styles.title}>{props.title || ''}</h1>
-      {isLanding && (
+      {isLanding && !loggedIn && (
         <Button
           className={Styles.loginButton}
           onButtonClick={() => navigate('/login')}
@@ -61,6 +63,22 @@ const AppHeader = (props: { title?: string }) => {
               alt="login icon"
             />
             Login
+          </>
+        </Button>
+      )}
+      {isLanding && loggedIn && (
+        <Button
+          className={Styles.loginButton}
+          onButtonClick={() => navigate('/profile')}
+        >
+          <>
+            <Icon
+              src={UserIcon}
+              size={iconSize}
+              color="white"
+              alt="profile icon"
+            />
+            Profile
           </>
         </Button>
       )}

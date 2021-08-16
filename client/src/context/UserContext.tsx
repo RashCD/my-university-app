@@ -5,6 +5,7 @@ import React, {
   SetStateAction,
   useState,
 } from 'react';
+import Cookie from '../util/cookie';
 
 type UserContextTypes = {
   loggedIn: boolean;
@@ -17,7 +18,9 @@ const UserContext = createContext<UserContextTypes>({
 });
 
 const UserProvider = (props: { children: ReactChild }) => {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(
+    Boolean(Cookie.get('cookieName', false))
+  );
 
   const implementation: UserContextTypes = {
     loggedIn,
