@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Landing page component test should match the snapshot 1`] = `
+<body>
+  <div>
+    <div
+      class="app"
+    >
+      <header
+        class="appHeader"
+      >
+        <button
+          class="button backButton"
+          type="button"
+        >
+          <span
+            class="iconContainer"
+            data-icon="true"
+            style="--icon-src: url(back.svg); --icon-color: var(--white); --icon-size: 30px;"
+          />
+          BACK
+        </button>
+        <h1
+          class="title"
+        >
+          University List App
+        </h1>
+      </header>
+      <main
+        class="app-main"
+      >
+        <div
+          class="container"
+        >
+          <form
+            class="form"
+          >
+            <div
+              class="inputContainer"
+            >
+              <label
+                class="label"
+                for="uni-name"
+              >
+                Name
+              </label>
+              <input
+                class="input"
+                id="uni-name"
+                name="name"
+                placeholder="Search by University Name"
+                type="text"
+              />
+            </div>
+            <div
+              class="inputContainer"
+            >
+              <label
+                class="label"
+                for="uni-country"
+              >
+                Country
+              </label>
+              <input
+                class="input"
+                id="uni-country"
+                name="country"
+                placeholder="Search by University Country"
+                type="text"
+              />
+            </div>
+            <button
+              class="button cta"
+              type="submit"
+            >
+              Search
+            </button>
+          </form>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+`;
