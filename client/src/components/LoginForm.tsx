@@ -44,6 +44,7 @@ const LoginForm = (props: LoginFormTypes) => {
       <Input
         id="password"
         label="Password"
+        type="password"
         placeholder="Enter Your Password"
         register={register('password')}
         errors={errors}

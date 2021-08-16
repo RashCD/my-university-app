@@ -51,6 +51,7 @@ const SignupForm = (props: SignupFormTypes) => {
       <Input
         id="password"
         label="Password"
+        type="password"
         placeholder="Enter Your Password"
         register={register('password')}
         errors={errors}
@@ -58,6 +59,7 @@ const SignupForm = (props: SignupFormTypes) => {
       <Input
         id="confirm_password"
         label="Confirm Password"
+        type="password"
         placeholder="Enter Again Your Password"
         register={register('confirm_password')}
         errors={errors}
