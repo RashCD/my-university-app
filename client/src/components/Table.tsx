@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-key */
-import React from 'react';
 import { useTable, useSortBy, Column } from 'react-table';
 import { Data } from '../views/LandingPage';
 import Styles from '../assets/styles/components/Table.module.scss';
