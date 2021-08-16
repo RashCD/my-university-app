@@ -50,7 +50,10 @@ app.post(
         setCookie({ response });
         setCookie({
           name: 'user',
-          content: { username: user.username, country: user.country },
+          content: JSON.stringify({
+            username: user.username,
+            country: user.country,
+          }),
           response,
         });
 
@@ -103,7 +106,7 @@ app.post(
         setCookie({ response });
         setCookie({
           name: 'user',
-          content: newContent,
+          content: JSON.stringify(newContent),
           response,
         });
         response.json({ message: 'User registered' });
