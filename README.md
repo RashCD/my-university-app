@@ -96,12 +96,12 @@ Frontend
 
 ---
 
-<img src="../my-university-app/screenshot/MobilePages.png" width="300" />
+<img src="screenshot/MobilePages.png" width="300" />
 
-<img src="../my-university-app/screenshot/LandingPage.png" width="400" />
+<img src="screenshot/LandingPage.png" width="400" />
 
-<img src="../my-university-app/screenshot/LandingPage_with_table.png" width="400" />
+<img src="screenshot/LandingPage_with_table.png" width="400" />
 
-<img src="../my-university-app/screenshot/LoginPage.png" width="400" />
+<img src="screenshot/LoginPage.png" width="400" />
 
-<img src="../my-university-app/screenshot/ProfilePage.png" width="400" />
+<img src="screenshot/ProfilePage.png" width="400" />
